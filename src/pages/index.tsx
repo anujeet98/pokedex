@@ -21,9 +21,12 @@ function Home() {
         e.preventDefault();
         if(searchArray.length===1){
             const {data} = await getPokemon.refetch();
-            console.log(data);
             if(data)
-                setSearchResult([data]);
+            {
+                const { id, name, types, sprite } = data;
+                const newPokemon: pokemon = { id, name, types, sprite };
+                setSearchResult([newPokemon]);
+            }
         }
         else if(searchArray.length>1){
             const { data } = await getPokemons.refetch();
