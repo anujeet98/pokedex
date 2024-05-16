@@ -1,6 +1,6 @@
 import { publicProcedure, router } from "../trpc";
 import { z } from 'zod';
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../../prisma/generated/client";
 import { pokemon, pokemonResultSet } from "@/utils/typedef";
 
 const prisma = new PrismaClient();
