@@ -2,6 +2,7 @@ import { publicProcedure, router } from "../trpc";
 import { z } from 'zod';
 
 import { PrismaClient } from "@prisma/client";
+import { pokemon } from "@/utils/typedef";
 
 const prisma = new PrismaClient();
 
@@ -32,16 +33,19 @@ export const pokemonRouter = router({
         try{
             const names: string[] = opts.input.map(elem=>elem.trim()).filter(elem=>elem.length!=0);
             const pokemons = await prisma.pokemons.findMany({where: { name: { in: names}}});
-            const pokemonData = pokemons.map(pokemon => ({
-                id: pokemon.id,
-                name: pokemon.name,
-                sprite: pokemon.sprite,
-                types: [pokemon.type1, pokemon.type2],
-            }));
+            if(pokemons){
+                const pokemonData = pokemons.map(pokemon => ({
+                    id: pokemon.id,
+                    name: pokemon.name,
+                    sprite: pokemon.sprite,
+                    types: [pokemon.type1, pokemon.type2],
+                }));
+                return pokemonData;
+            }
+            else{
+                throw new Error('pokemon data not found');
+            }
     
-            console.log(pokemonData);
-    
-            return pokemonData;
         }
         catch(err){
             throw err;
