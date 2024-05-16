@@ -13,14 +13,27 @@
 }
 
 .input-form > input{
-    width: 15rem;
+    width: 20rem;
     height: 2rem;
     border-radius: 3px;
     margin-right: 1rem;
+    font-size: larger;
 }
 
 .input-form > button{
     width: 5rem;
     height: 2rem;
     border-radius: 3px;
+    background-color: blueviolet;
+    color: white;
+    font-size: medium;
+}
+
+
+.input-form > button:hover{
+    background-color: rgb(83, 21, 142);
+}
+
+.container > h1 > span{
+    color: red;
 }

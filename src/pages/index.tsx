@@ -42,7 +42,7 @@ function Home() {
     }
   return (
     <div className={classes.container}>
-        <h1>POKEDEX</h1>
+        <h1><span>POKE</span>DEX</h1>
         <div>
             <form className={classes['input-form']}>
                 <input type='text' value={searchQuery} onChange={(e)=>inputHandler(e)} placeholder='Enter the pokemon name(s) here...'></input>
