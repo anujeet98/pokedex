@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PokedexTable from './PokedexTable'
-import PokemonRow from './PokemonRow'
 import { pokemon } from '@/utils/typedef';
-
+import classes from '../styles/filterablePokedexTable.module.css';
+import PokemonTypeSelection from './PokemonTypeSelection';
 
 // let pokemonData = [
 //   {
@@ -25,10 +25,25 @@ import { pokemon } from '@/utils/typedef';
 //   }
 // ]
 function FilterablePokedexTable({pokemonData}: {pokemonData: pokemon[]}) {
+  const [filteredData, setFilteredData] = useState<pokemon[]>([]);
+  const [type, setType] = useState('All');
+  const selectHandler = (type: string | undefined) =>{
+    if(type==='all')
+      setFilteredData(pokemonData);
+    else if(type){
+      setFilteredData(pokemonData.filter(pokemon => pokemon.types.includes(type)));
+    }
+      
+  }
+
+  useEffect(()=>{
+    setFilteredData(pokemonData);
+  },[pokemonData]);
   return (
-    <div>
+    <div className={classes['result-container']}>
         <h2>Search Results</h2>
-        <PokedexTable pokemons={pokemonData} />
+        <PokemonTypeSelection selectedType={type} selectType={selectHandler} />
+        <PokedexTable pokemons={filteredData} />
     </div>
   )
 }
