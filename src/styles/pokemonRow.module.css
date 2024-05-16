@@ -1,0 +1,17 @@
+
+.item{
+    display: flex;
+    gap: 2rem;
+}
+
+.item > img{
+    max-width: 5rem;
+    max-height: 5rem;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
