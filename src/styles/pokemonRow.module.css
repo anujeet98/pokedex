@@ -2,6 +2,11 @@
 .item{
     display: flex;
     gap: 2rem;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 3rem 4rem;
+    box-shadow: 5px 10px 8px 10px #888888;
+    margin-bottom: 2rem;
 }
 
 .item > img{

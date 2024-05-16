@@ -15,7 +15,7 @@ function PokemonRow ({pokemonData}: {pokemonData: pokemon}) {
       <div className={classes.info}>
           <span>Id: {pokemonData.id}</span>
           <span>Name: {pokemonData.name}</span>
-          <span>Types: {pokemonData.types}</span>
+          <span>Types: {pokemonData.types[0]}, {pokemonData.types[1]}</span>
       </div>
     </div>
   )
