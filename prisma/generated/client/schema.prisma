@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model pokemons {
+  id     Int    @id @default(autoincrement())
+  name   String @unique(map: "name_UNIQUE") @db.VarChar(45)
+  sprite String @db.VarChar(500)
+  type1  String @db.VarChar(45)
+  type2  String @db.VarChar(45)
+}
