@@ -16,7 +16,7 @@ export const pokemonRouter = router({
                     id: pokemon.id,
                     name: pokemon.name,
                     sprite: pokemon.sprite,
-                    types: [pokemon.type1, pokemon?.type2],
+                    types: [pokemon.type1, pokemon.type2],
                 };
                 return pokemonData;
             }
@@ -34,9 +34,9 @@ export const pokemonRouter = router({
             const pokemons = await prisma.pokemons.findMany({where: { name: { in: names}}});
             const pokemonData = pokemons.map(pokemon => ({
                 id: pokemon.id,
-                name: pokemon?.name,
-                sprite: pokemon?.sprite,
-                types: [pokemon?.type1, pokemon?.type2],
+                name: pokemon.name,
+                sprite: pokemon.sprite,
+                types: [pokemon.type1, pokemon.type2],
             }));
     
             console.log(pokemonData);
