@@ -14,29 +14,42 @@ function Home() {
 
     const getPokemons = trpc.pokemon.getPokemonsByNames.useQuery(searchArray,{
         enabled: false,
-        
     });
 
     const searchHandler = async(e: React.FormEvent)=>{
         e.preventDefault();
-        if(searchArray.length===1){
-            const {data} = await getPokemon.refetch();
-            if(data)
-            {
-                const { id, name, types, sprite } = data;
-                const newPokemon: pokemon = { id, name, types, sprite };
-                setSearchResult([newPokemon]);
+        try{
+            if(searchArray.length===1){
+                const {data} = await getPokemon.refetch();
+                if(data)
+                {
+                    const { id, name, types, sprite } = data;
+                    const newPokemon: pokemon = { id, name, types, sprite };
+                    setSearchResult([newPokemon]);
+                }
+                else{
+                    alert('Searched pokemon not found.');
+                }
+            }
+            else if(searchArray.length>1){
+                const { data } = await getPokemons.refetch();
+                if (data)
+                    setSearchResult(data); 
+                else{
+                    alert('Searched pokemons not found.');
+                }
             }
         }
-        else if(searchArray.length>1){
-            const { data } = await getPokemons.refetch();
-            if (data)
-                setSearchResult(data); 
+        catch(err){
+            console.log(err);
+            alert('something went wrong while searching pokemon data');    
         }
     }
     const inputHandler = (e: ChangeEvent<HTMLInputElement>)=>{
-        const input = e.target.value;
+        const input = e.target.value.toLowerCase();
         setSearchQuery(input);
+
+        //for maintianing comma separated search query array
         const search: string[] = input.split(',').map(elem=>elem.trim()).filter(elem=>elem.length!=0);
         setSearchArray(search);
     }
