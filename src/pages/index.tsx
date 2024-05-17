@@ -3,11 +3,13 @@ import classes from '../styles/home.module.css'
 import FilterablePokedexTable from '../components/FilterablePokedexTable';
 import { trpc } from "@/utils/trpc";
 import { pokemon } from '@/utils/typedef';
+import { Button } from '@mui/material';
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchArray, setSearchArray] = useState<string[]>([]);
     const [searchResult, setSearchResult] = useState<pokemon[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
     const getPokemon = trpc.pokemon.getPokemonByName.useQuery(searchQuery,{
         enabled: false,
     });
@@ -55,14 +57,13 @@ function Home() {
     }
   return (
     <div className={classes.container}>
-        <h1><span>POKE</span>DEX</h1>
-        <div>
+            <h1><span>POKE</span>DEX</h1>
             <form className={classes['input-form']}>
                 <input type='text' value={searchQuery} onChange={(e)=>inputHandler(e)} placeholder='Enter the pokemon name(s) here...'></input>
-                <button type='submit' onClick={searchHandler}>Search</button>
+                <Button variant='contained' color='secondary' onClick={searchHandler}>SEARCH</Button>
             </form>
-            <FilterablePokedexTable pokemonData={searchResult} />
-        </div> 
+
+        <FilterablePokedexTable pokemonData={searchResult} />
     </div>
   )
 }

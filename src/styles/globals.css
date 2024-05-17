@@ -7,7 +7,14 @@
 body {
   font-family: 'Open Sans', 'Lato', sans-serif;
   margin: 0;
-  background-color: rgba(128, 128, 128, 0.142);
+  background-image: url('../../public/home-bg.png');
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: color-burn;
+  background-color: rgb(132, 132, 132);
 }
 
 h1,

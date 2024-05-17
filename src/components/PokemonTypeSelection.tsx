@@ -1,21 +1,17 @@
 import React from 'react'
+import classes from '../styles/pokemonTypeSelection.module.css'
 
 type PokemonTypeSelectionProps = {
   selectedType: string | undefined;
   selectType: (type: string | undefined) => void;
 }
-
+const types = ['ALL', 'WATER', 'FIRE', 'ICE', 'GRASS', 'POISON', 'GHOST', 'GROUND', 'ROCK', 'STEEL', 'FLYING', 'FIGHTING', 'ELECTRIC', 'BUG', 'NORMAL', 'PHSYCHIC']
 function PokemonTypeSelection(props: PokemonTypeSelectionProps) {
   return (
-    <div style={{marginBottom: '1rem'}}>Select Type: 
-      <select onChange={(e)=>props.selectType(e.target.value)}>
-        <option>all</option>
-        <option>fire</option>
-        <option>water</option>
-        <option>flying</option>
-        <option>grass</option>
-        <option>poison</option>
-        <option>electric</option>
+    <div className={classes.container}>
+      <span className={classes.label}>Select Type: </span>
+      <select onChange={(e)=>props.selectType(e.target.value)} value={props.selectedType}>
+        {types.map(type=><option>{type}</option>)}
       </select>
     </div>
   )

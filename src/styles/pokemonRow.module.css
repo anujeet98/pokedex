@@ -2,16 +2,20 @@
 .item{
     display: flex;
     gap: 2rem;
+    background-color: rgb(255, 255, 255);
     border: 1px solid black;
     border-radius: 8px;
-    padding: 3rem 4rem;
-    box-shadow: 5px 10px 8px 10px #888888;
+    padding: 2rem 3rem;
+    box-shadow: 10px 20px 8px 10px #22222241;
     margin-bottom: 2rem;
+}
+.item:hover{
+    box-shadow: 10px 20px 8px 10px #1816169b;
 }
 
 .item > img{
-    max-width: 8rem;
-    max-height: 8rem;
+    max-width: 10rem;
+    max-height: 10rem;
 }
 
 .info{

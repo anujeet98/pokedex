@@ -32,6 +32,7 @@ function FilterablePokedexTable({pokemonData}: {pokemonData: pokemon[]}) {
       setFilteredData(pokemonData);
     else if(type){
       setFilteredData(pokemonData.filter(pokemon => pokemon.types.includes(type)));
+      setType(type);
     }
       
   }

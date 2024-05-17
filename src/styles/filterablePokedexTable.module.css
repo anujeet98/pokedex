@@ -3,3 +3,9 @@
 .result-container{
     text-align: center;
 }
+
+.result-container > h2{
+    font-size: larger;
+    font-weight: bolder;
+    color: white;
+}
